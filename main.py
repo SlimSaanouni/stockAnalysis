@@ -63,9 +63,6 @@ else:
         closing_idx = historical_data["Close"][mask_down]
         historical_data = historical_data[["Close"]][mask_down & mask_up]
 
-        # Volatility calculus
-        volatility = closing_idx.pct_change().rolling(window=30).std() * np.sqrt(252)
-
         # LS and DAC ROIs calculus
         historical_data[ls_colname]     = invStrat.lump_sum_approach(closing_idx,
                                                        historical_data.index,
@@ -76,11 +73,15 @@ else:
                                                         invest_freq)
         ls_roi  = historical_data[ls_colname]
         dac_roi = historical_data[dac_colname]
+        closing_idx = historical_data["Close"]
 
         # Expected returns
         ls_mean_roi = ls_roi.mean()
         dac_mean_roi = dac_roi.mean()
-        
+
+        # Volatility calculus
+        volatility = closing_idx.pct_change().rolling(window=30).std() * np.sqrt(252)
+
         '''
         ### Historical data
         '''
