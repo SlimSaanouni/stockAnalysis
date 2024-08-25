@@ -46,13 +46,13 @@ end_date = st.sidebar.date_input("End date", min_value=min_date, value=max_date)
 
 # Checks
 if start_date >= end_date:
-    st.sidebar.error("La date de début doit être antérieure à la date de fin.")
+    st.sidebar.error("Start date must be anterior to end date.")
 elif invest_horiz > (end_date.year - start_date.year) * 12 + end_date.month - start_date.month:
-    st.sidebar.error("L'horizon d'investissement ne doit pas excéder la période sélectionnée.")
+    st.sidebar.error("Investment horizon should not exceed the end date.")
 else:
     
     if historical_data.empty:
-        st.error("Aucune donnée disponible pour cette action et cette période.")
+        st.error("No data available for this stock at this time span.")
     else:
         ls_colname  = "Lump Sum"
         dac_colname = "Dollar Average Cost"
@@ -87,15 +87,15 @@ else:
         # Index & Volatility graphs
         fig, ax1 = plt.subplots(figsize=(12, 6))
         sns.lineplot(data=closing_idx, ax=ax1, color="blue", label = 'Price')
-        ax1.set_ylabel("Prix de clôture (€)")
+        ax1.set_ylabel("Closing price (€)")
         ax1.tick_params(axis="y")
         ax1.legend(loc = 0)
         ax2 = ax1.twinx()
         sns.lineplot(data=volatility, ax=ax2, color="red", label = "Volatility")
-        ax2.set_ylabel("Volatilité")
+        ax2.set_ylabel("Volatility")
         ax2.tick_params(axis="y")
         ax2.legend(loc = 0)
-        plt.title(f"Prix de clôture et volatilité de {selected_action}")
+        plt.title(f"Closing price and volatility of {selected_action}")
         st.pyplot(fig)
 
         '''
@@ -131,13 +131,13 @@ else:
 
         # Violin plot
         sns.violinplot(data=historical_data, ax=axes[0], palette="pastel")
-        axes[0].set_title("Violin Plot des ROI annualisés glissants")
-        axes[0].set_xlabel("Type de ROI")
+        axes[0].set_title("Violin plots of moving annualized ROIs")
+        axes[0].set_xlabel("Approach")
 
         # Boxplot
         sns.boxplot(data=historical_data, ax=axes[1], palette="pastel")
-        axes[1].set_title("Boxplot des ROI annualisés glissants")
-        axes[1].set_xlabel("Type de ROI")
+        axes[1].set_title("Boxplot  of moving annualized ROIs")
+        axes[1].set_xlabel("Approach")
         plt.tight_layout()
         st.pyplot(fig)
 
