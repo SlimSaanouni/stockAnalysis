@@ -32,7 +32,7 @@ stocks = ["AAPL", "MSFT", "AMZN", "GOOGL", "META", "TSLA", "NVDA", "JPM", "V", "
 
 # Sidebar widgets
 selected_action = st.sidebar.selectbox("Select a stock name", stocks)
-invest_amount = st.sidebar.number_input("Amount to invest (€)", min_value=0, value=1000, step=100)
+invest_amount = st.sidebar.number_input("Amount to invest ($)", min_value=0, value=1000, step=100)
 invest_freq = int(st.sidebar.number_input("Frequency (months)", min_value=1, value=1, step=1))
 invest_horiz = int(st.sidebar.number_input("Horizon of investment (months)", min_value=1, value=12, step=1))
 
@@ -87,7 +87,7 @@ else:
         # Index & Volatility graphs
         fig, ax1 = plt.subplots(figsize=(12, 6))
         sns.lineplot(data=closing_idx, ax=ax1, color="blue", label = 'Price')
-        ax1.set_ylabel("Closing price (€)")
+        ax1.set_ylabel("Closing price ($)")
         ax1.tick_params(axis="y")
         ax1.legend(loc = 0)
         ax2 = ax1.twinx()
@@ -111,7 +111,7 @@ else:
             ls_col.metric("Annualized return rates", f"{ls_mean_roi * 100:.2f}%") 
             ls_amt      = invest_amount * (ls_mean_roi + 1) **  (invest_horiz/ MONTH_YEAR)
             ls_delta    = ls_amt - invest_amount
-            ls_col.metric("Expected return amounts", f"{ls_amt:.2f}€", f"{ls_delta:.2f}€") 
+            ls_col.metric("Expected return amounts", f"{ls_amt:.2f}$", f"{ls_delta:.2f}$") 
         with dac_col:
             '''
             #### Dollar average cost
@@ -119,7 +119,7 @@ else:
             dac_col.metric("Annualized return rates", f"{dac_mean_roi * 100:.2f}%")
             dac_amt      = invest_amount * (dac_mean_roi + 1) **  (invest_horiz/ MONTH_YEAR)
             dac_delta    = dac_amt - invest_amount
-            dac_col.metric("Expected return amounts", f"{dac_amt:.2f}€", f"{dac_delta:.2f}€")
+            dac_col.metric("Expected return amounts", f"{dac_amt:.2f}$", f"{dac_delta:.2f}$")
 
         '''
         ### Statistics
