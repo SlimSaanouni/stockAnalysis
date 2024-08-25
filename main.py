@@ -9,7 +9,7 @@ from datetime import datetime
 import investmentStrategies as invStrat
 from investmentStrategies import MONTH_YEAR
 
-# Configurer Seaborn
+# Seaborn customization
 custom_params = {
     "axes.facecolor": "black",   # Fond des axes en noir
     "figure.facecolor": "black", # Fond de la figure en noir
@@ -25,14 +25,13 @@ custom_params = {
 sns.set_context("notebook")
 sns.set_style("dark", custom_params)
 
-# Sidebar inputs
 st.sidebar.header("Investment properties")
 
-# Liste des actions disponibles
-actions = ["AAPL", "MSFT", "AMZN", "GOOGL", "META", "TSLA", "NVDA", "JPM", "V", "JNJ"]
+# List of stocks
+stocks = ["AAPL", "MSFT", "AMZN", "GOOGL", "META", "TSLA", "NVDA", "JPM", "V", "JNJ"]
 
-# Widgets de sélection dans la barre latérale
-selected_action = st.sidebar.selectbox("Select a stock name", actions)
+# Sidebar widgets
+selected_action = st.sidebar.selectbox("Select a stock name", stocks)
 invest_amount = st.sidebar.number_input("Amount to invest (€)", min_value=0, value=1000, step=100)
 invest_freq = int(st.sidebar.number_input("Frequency (months)", min_value=1, value=1, step=1))
 invest_horiz = int(st.sidebar.number_input("Horizon of investment (months)", min_value=1, value=12, step=1))
@@ -45,7 +44,7 @@ max_date = historical_data.index.max().date()
 start_date = st.sidebar.date_input("Start date", min_value=min_date, value=min_date)
 end_date = st.sidebar.date_input("End date", min_value=min_date, value=max_date)
 
-# Validation des dates et de l'horizon d'investissement
+# Checks
 if start_date >= end_date:
     st.sidebar.error("La date de début doit être antérieure à la date de fin.")
 elif invest_horiz > (end_date.year - start_date.year) * 12 + end_date.month - start_date.month:
