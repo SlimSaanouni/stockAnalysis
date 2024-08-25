@@ -11,15 +11,15 @@ from investmentStrategies import MONTH_YEAR
 
 # Seaborn customization
 custom_params = {
-    "axes.facecolor": "black",   # Fond des axes en noir
-    "figure.facecolor": "black", # Fond de la figure en noir
-    "axes.edgecolor": "grey",   # Bordures des axes en blanc
-    "axes.labelcolor": "white",  # Couleur des étiquettes des axes en blanc
-    "xtick.color": "white",      # Couleur des ticks de l'axe x en blanc
-    "ytick.color": "white",      # Couleur des ticks de l'axe y en blanc
-    "text.color": "white",       # Couleur du texte en blanc
-    "legend.edgecolor": "white", # Bordure de la légende en blanc
-    "legend.facecolor": "black"  # Fond de la légende en noir
+    "axes.facecolor": "black",
+    "figure.facecolor": "black",
+    "axes.edgecolor": "grey",
+    "axes.labelcolor": "white",
+    "xtick.color": "white",
+    "ytick.color": "white",
+    "text.color": "white",
+    "legend.edgecolor": "white",
+    "legend.facecolor": "black"
 }
 
 sns.set_context("notebook")
