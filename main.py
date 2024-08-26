@@ -58,10 +58,11 @@ else:
         dac_colname = "Dollar Average Cost"
         
         #Reduce the quantity of data to handle
-        mask_up = (historical_data.index <= end_date - pd.DateOffset(months = invest_horiz))
+        mask_up = (historical_data.index <= end_date - pd.DateOffset(months = 0))
+        mask_up_horiz = (historical_data.index <= end_date - pd.DateOffset(months = invest_horiz))
         mask_down = (historical_data.index >= start_date + pd.DateOffset(months = 0))
-        closing_idx = historical_data["Close"][mask_down]
-        historical_data = historical_data[["Close"]][mask_down & mask_up]
+        closing_idx = historical_data["Close"][mask_down & mask_up]
+        historical_data = historical_data[["Close"]][mask_down & mask_up_horiz]
 
         # LS and DAC ROIs calculus
         historical_data[ls_colname]     = invStrat.lump_sum_approach(closing_idx,
@@ -73,7 +74,6 @@ else:
                                                         invest_freq)
         ls_roi  = historical_data[ls_colname]
         dac_roi = historical_data[dac_colname]
-        closing_idx = historical_data["Close"]
 
         # Expected returns
         ls_mean_roi = ls_roi.mean()
