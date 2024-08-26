@@ -9,6 +9,17 @@ from datetime import datetime
 import investmentStrategies as invStrat
 from investmentStrategies import MONTH_YEAR
 
+__authors__ = ("Slim Saanouni")
+__contact__ = ("saanouni.slim@gmail.com")
+__copyright__ = "SSA Advisory"
+__date__ = "2024"
+__version__= "0.0.1"
+
+#Definition de la page
+st.set_page_config(
+    page_title="SSA Stock Analysis", page_icon="📊", initial_sidebar_state="expanded"
+)
+
 # Seaborn customization
 custom_params = {
     "axes.facecolor": "black",
