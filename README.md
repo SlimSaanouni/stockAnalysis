@@ -1,6 +1,8 @@
 # SSA Stock Analysis 📊
 
-SSA Stock Analysis is an interactive Streamlit application designed for analyzing investment returns in stocks. It allows you to calculate and visualize the return on investment (ROI) for different investment strategies, such as Lump Sum and Dollar Cost Averaging, over a defined investment horizon.
+SSA Stock Analysis is a very basic interactive Streamlit application designed for analyzing investment returns in stocks, focusing on indices without considering dividends. It allows you to calculate and visualize the return on investment (ROI) for different investment strategies, such as Lump Sum and Dollar Cost Averaging, over a defined investment horizon.
+
+The application is available here
 
 ## Features
 
@@ -8,6 +10,10 @@ SSA Stock Analysis is an interactive Streamlit application designed for analyzin
 - **ROI Calculation:** Compute the annualized ROI for Lump Sum and Dollar Cost Averaging strategies over a specified investment horizon.
 - **Data Visualization:** Display charts showing the evolution of stock prices and volatility. Compare ROI distributions using boxplots and violin plots.
 - **Investment Customization:** Set the investment amount, investment frequency, investment horizon, as well as the start and end dates for the historical data analysis.
+
+## Live Demo
+
+Check out the live demo of the application [here](https://ssa-stockanalysis.streamlit.app).
 
 ## Installation
 
